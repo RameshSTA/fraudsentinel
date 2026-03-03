@@ -1,0 +1,55 @@
+repos:
+  # ─── Code Formatting ────────────────────────────────────────────────────────
+  - repo: https://github.com/psf/black
+    rev: 23.11.0
+    hooks:
+      - id: black
+        args: [--line-length=100]
+        language_version: python3
+
+  # ─── Linting (Ruff replaces flake8 + isort + pylint) ───────────────────────
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.6
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+
+  # ─── Secret Detection ────────────────────────────────────────────────────────
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: ["--baseline", ".secrets.baseline"]
+        exclude: (?x)^(
+            \.venv/|
+            data/|
+            models/|
+            reports/|
+            \.git/
+          )$
+
+  # ─── General Hygiene ─────────────────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+        exclude: (?x)^(data/|models/|reports/)
+      - id: trailing-whitespace
+        exclude: (?x)^(data/|models/|reports/)
+      - id: check-added-large-files
+        args: ["--maxkb=5000"]
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]
+      - id: check-case-conflict
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  # ─── Python Upgrades ─────────────────────────────────────────────────────────
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
+        args: [--py39-plus]

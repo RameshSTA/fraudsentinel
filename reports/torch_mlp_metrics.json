@@ -1,0 +1,29 @@
+{
+  "model": "torch_mlp_embeddings",
+  "device": "mps",
+  "config": {
+    "target_col": "y_ew_72h",
+    "split_col": "split",
+    "entity_buckets": 1048576,
+    "fingerprint_buckets": 262144,
+    "entity_emb_dim": 32,
+    "fingerprint_emb_dim": 16,
+    "hidden_dim": 256,
+    "dropout": 0.2,
+    "batch_size": 4096,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "max_epochs": 15,
+    "patience": 3,
+    "num_workers": 0
+  },
+  "valid_metrics": {
+    "auc_roc": 0.7962695298351053,
+    "avg_precision": 0.13552853550300392
+  },
+  "test_metrics": {
+    "auc_roc": 0.7600595683903686,
+    "avg_precision": 0.09741876058961674
+  },
+  "notes": "Hashed entity_key & fingerprint_key embeddings + standardized numeric features + MLP head."
+}

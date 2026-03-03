@@ -1,0 +1,43 @@
+{
+  "model": "logistic_regression_saga",
+  "columns_used": {
+    "numeric": [
+      "TransactionAmt",
+      "cnt_1h",
+      "sum_amt_1h",
+      "cnt_24h",
+      "avg_amt_24h",
+      "mean_amt_7d_hist",
+      "std_amt_7d_hist",
+      "z_amt_vs_7d",
+      "fp_cnt_24h",
+      "fp_cnt_72h",
+      "fp_growth_ratio_24h_over_72h"
+    ],
+    "categorical": [
+      "ProductCD",
+      "P_emaildomain",
+      "R_emaildomain",
+      "DeviceType"
+    ],
+    "hashed_keys": [
+      "entity_key",
+      "fingerprint_key"
+    ]
+  },
+  "valid_metrics": {
+    "auc_roc": 0.7881762102153628,
+    "avg_precision": 0.128577951692319
+  },
+  "test_metrics": {
+    "auc_roc": 0.7611637577209016,
+    "avg_precision": 0.08532950149648565
+  },
+  "threshold_selection": {
+    "best_threshold": 0.7465085534432342,
+    "best_f1": 0.2234395271726712,
+    "precision_at_best": 0.17341687178339674,
+    "recall_at_best": 0.3140194489465154
+  },
+  "notes": "Numeric + one-hot categoricals + hashed keys (entity_key, fingerprint_key)."
+}

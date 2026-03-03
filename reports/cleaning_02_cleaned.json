@@ -1,0 +1,55 @@
+{
+  "rows_before": 590540,
+  "cols_before": 434,
+  "duplicate_transaction_id_rows": 0,
+  "rows_after": 590540,
+  "cols_after": 434,
+  "missing_core_pct": {
+    "TransactionID": 0.0,
+    "TransactionDT": 0.0,
+    "TransactionAmt": 0.0,
+    "isFraud": 0.0
+  },
+  "core_dtypes": {
+    "TransactionID": "int64",
+    "TransactionDT": "Int64",
+    "TransactionAmt": "float64",
+    "isFraud": "Int64"
+  },
+  "label_counts": {
+    "0": 569877,
+    "1": 20663
+  },
+  "label_rate_pct": 3.4990009144173126,
+  "transaction_dt_min": 86400,
+  "transaction_dt_max": 15811131,
+  "amount_summary": {
+    "min": 0.251,
+    "max": 31937.391,
+    "p50": 68.769,
+    "p95": 445.0,
+    "p99": 1104.0
+  },
+  "identity_coverage_pct": 23.851898262607104,
+  "identity_columns_used": [
+    "DeviceInfo",
+    "DeviceType"
+  ],
+  "top_missing_columns_pct": {
+    "id_24": 99.1962,
+    "id_25": 99.131,
+    "id_07": 99.1271,
+    "id_08": 99.1271,
+    "id_21": 99.1264,
+    "id_26": 99.1257,
+    "id_27": 99.1247,
+    "id_23": 99.1247,
+    "id_22": 99.1247,
+    "dist2": 93.6284,
+    "D7": 93.4099,
+    "id_18": 92.3607,
+    "D13": 89.5093,
+    "D14": 89.4695,
+    "D12": 89.041
+  }
+}

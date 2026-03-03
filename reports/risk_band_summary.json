@@ -1,0 +1,77 @@
+{
+  "policy": {
+    "type": "capacity_based",
+    "bands": {
+      "critical_top_pct": 1.0,
+      "high_top_pct": 3.0,
+      "medium_top_pct": 8.0
+    },
+    "temperature_used": 0.979826807975769,
+    "score_cutoffs": {
+      "critical": 0.9439040601253513,
+      "high": 0.8983144152164462,
+      "medium": 0.7394212198257446
+    }
+  },
+  "summary": {
+    "per_band": {
+      "critical": {
+        "count": 886,
+        "positives": 92,
+        "precision": 0.1038374717832957
+      },
+      "high": {
+        "count": 1772,
+        "positives": 338,
+        "precision": 0.19074492099322798
+      },
+      "low": {
+        "count": 81493,
+        "positives": 1537,
+        "precision": 0.018860515627109078
+      },
+      "medium": {
+        "count": 4429,
+        "positives": 495,
+        "precision": 0.1117633777376383
+      }
+    },
+    "cumulative": [
+      {
+        "up_to_band": "critical",
+        "rows": 886,
+        "rows_pct": 1.0002257846014901,
+        "captured_pos": 92,
+        "recall": 0.03736799350121852,
+        "precision": 0.1038374717832957
+      },
+      {
+        "up_to_band": "high",
+        "rows": 2658,
+        "rows_pct": 3.0006773538044706,
+        "captured_pos": 430,
+        "recall": 0.17465475223395613,
+        "precision": 0.1617757712565839
+      },
+      {
+        "up_to_band": "medium",
+        "rows": 7087,
+        "rows_pct": 8.00067735380447,
+        "captured_pos": 925,
+        "recall": 0.37571080422420794,
+        "precision": 0.13052067165232115
+      },
+      {
+        "up_to_band": "low",
+        "rows": 88580,
+        "rows_pct": 100.0,
+        "captured_pos": 2462,
+        "recall": 1.0,
+        "precision": 0.027794084443440958
+      }
+    ],
+    "total_rows": 88580,
+    "total_positives": 2462,
+    "base_rate": 0.027794084443440958
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "shape": {
+    "rows": 590540,
+    "columns": 434
+  },
+  "columns": {
+    "present_key_columns": [
+      "TransactionID",
+      "TransactionDT",
+      "TransactionAmt",
+      "isFraud",
+      "ProductCD",
+      "card1",
+      "card2",
+      "card3",
+      "card5",
+      "addr1",
+      "addr2",
+      "P_emaildomain",
+      "R_emaildomain",
+      "DeviceType",
+      "DeviceInfo"
+    ],
+    "missing_key_columns": []
+  },
+  "time": {
+    "transaction_dt_min": 86400,
+    "transaction_dt_max": 15811131,
+    "transaction_dt_missing_pct": 0.0
+  },
+  "label": {
+    "isFraud_missing_pct": 0.0,
+    "isFraud_rate_pct": 3.4990009144173126,
+    "isFraud_counts": {
+      "0": 569877,
+      "1": 20663
+    }
+  },
+  "missingness_pct": {
+    "TransactionID": 0.0,
+    "TransactionDT": 0.0,
+    "TransactionAmt": 0.0,
+    "isFraud": 0.0,
+    "ProductCD": 0.0,
+    "card1": 0.0,
+    "card2": 1.5126833068039423,
+    "card3": 0.26501168422122123,
+    "card5": 0.7212043214684865,
+    "addr1": 11.12642666034477,
+    "addr2": 11.12642666034477,
+    "P_emaildomain": 15.99485216920107,
+    "R_emaildomain": 76.75161716395164,
+    "DeviceType": 76.15572188166763,
+    "DeviceInfo": 79.90551021099333
+  },
+  "identity_coverage": {
+    "columns_used": [
+      "DeviceInfo",
+      "DeviceType"
+    ],
+    "rows_with_any_identity_pct": 23.851898262607104
+  },
+  "numeric_sanity": {
+    "TransactionAmt": {
+      "missing_pct": 0.0,
+      "min": 0.251,
+      "max": 31937.391,
+      "p50": 68.769,
+      "p95": 445.0,
+      "p99": 1104.0
+    },
+    "card1": {
+      "missing_pct": 0.0,
+      "min": 1000.0,
+      "max": 18396.0,
+      "p50": 9678.0,
+      "p95": 17319.0,
+      "p99": 18238.0
+    },
+    "card2": {
+      "missing_pct": 1.5126833068039423,
+      "min": 100.0,
+      "max": 600.0,
+      "p50": 361.0,
+      "p95": 567.0,
+      "p99": 583.0
+    },
+    "addr1": {
+      "missing_pct": 11.12642666034477,
+      "min": 100.0,
+      "max": 540.0,
+      "p50": 299.0,
+      "p95": 485.0,
+      "p99": 512.0
+    },
+    "addr2": {
+      "missing_pct": 11.12642666034477,
+      "min": 10.0,
+      "max": 102.0,
+      "p50": 87.0,
+      "p95": 87.0,
+      "p99": 87.0
+    }
+  },
+  "top_categories": {
+    "ProductCD": {
+      "W": 439670,
+      "C": 68519,
+      "R": 37699,
+      "H": 33024,
+      "S": 11628
+    },
+    "P_emaildomain": {
+      "gmail.com": 228355,
+      "yahoo.com": 100934,
+      "<NA>": 94456,
+      "hotmail.com": 45250,
+      "anonymous.com": 36998,
+      "aol.com": 28289,
+      "comcast.net": 7888,
+      "icloud.com": 6267,
+      "outlook.com": 5096,
+      "msn.com": 4092
+    },
+    "R_emaildomain": {
+      "<NA>": 453249,
+      "gmail.com": 57147,
+      "hotmail.com": 27509,
+      "anonymous.com": 20529,
+      "yahoo.com": 11842,
+      "aol.com": 3701,
+      "outlook.com": 2507,
+      "comcast.net": 1812,
+      "yahoo.com.mx": 1508,
+      "icloud.com": 1398
+    },
+    "DeviceType": {
+      "<NA>": 449730,
+      "desktop": 85165,
+      "mobile": 55645
+    }
+  }
+}

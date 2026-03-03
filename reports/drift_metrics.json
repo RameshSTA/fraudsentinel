@@ -1,0 +1,123 @@
+{
+  "features": {
+    "TransactionAmt": {
+      "ks_statistic": 0.0132,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 134.6527,
+      "current_mean": 137.1494,
+      "mean_change_pct": 1.85
+    },
+    "cnt_1h": {
+      "ks_statistic": 0.0129,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 1.4712,
+      "current_mean": 2.6195,
+      "mean_change_pct": 78.05
+    },
+    "sum_amt_1h": {
+      "ks_statistic": 0.0163,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 191.1207,
+      "current_mean": 316.4837,
+      "mean_change_pct": 65.59
+    },
+    "cnt_24h": {
+      "ks_statistic": 0.0108,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 6.2101,
+      "current_mean": 10.7544,
+      "mean_change_pct": 73.18
+    },
+    "avg_amt_24h": {
+      "ks_statistic": 0.0142,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 135.1439,
+      "current_mean": 138.09,
+      "mean_change_pct": 2.18
+    },
+    "mean_amt_7d_hist": {
+      "ks_statistic": 0.046,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 120.9466,
+      "current_mean": 130.9618,
+      "mean_change_pct": 8.28
+    },
+    "std_amt_7d_hist": {
+      "ks_statistic": 0.0225,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 88.1966,
+      "current_mean": 90.3954,
+      "mean_change_pct": 2.49
+    },
+    "z_amt_vs_7d": {
+      "ks_statistic": 0.0072,
+      "p_value": 0.0044,
+      "drift_detected": true,
+      "ref_mean": 1.2052,
+      "current_mean": 1.1604,
+      "mean_change_pct": 3.72
+    },
+    "fp_cnt_24h": {
+      "ks_statistic": 0.0771,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 448.9742,
+      "current_mean": 432.6824,
+      "mean_change_pct": 3.63
+    },
+    "fp_cnt_72h": {
+      "ks_statistic": 0.1001,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 1308.1642,
+      "current_mean": 1271.2645,
+      "mean_change_pct": 2.82
+    },
+    "fp_growth_ratio_24h_over_72h": {
+      "ks_statistic": 0.0379,
+      "p_value": 0.0,
+      "drift_detected": true,
+      "ref_mean": 0.3936,
+      "current_mean": 0.3901,
+      "mean_change_pct": 0.88
+    }
+  },
+  "score": {
+    "reference_mean_score": 0.028,
+    "current_mean_score": 0.3054,
+    "absolute_shift": 0.2774,
+    "alert": true
+  },
+  "label": {
+    "reference_positive_rate": 0.0287,
+    "current_positive_rate": 0.0278,
+    "absolute_shift": 0.0009
+  },
+  "summary": {
+    "n_features_monitored": 11,
+    "n_features_drifted": 11,
+    "drift_share": 1.0,
+    "drifted_features": [
+      "TransactionAmt",
+      "cnt_1h",
+      "sum_amt_1h",
+      "cnt_24h",
+      "avg_amt_24h",
+      "mean_amt_7d_hist",
+      "std_amt_7d_hist",
+      "z_amt_vs_7d",
+      "fp_cnt_24h",
+      "fp_cnt_72h",
+      "fp_growth_ratio_24h_over_72h"
+    ],
+    "alert_drift_threshold": 0.3,
+    "global_alert": true
+  }
+}

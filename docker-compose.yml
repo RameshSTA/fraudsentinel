@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  # ─── Fraud Risk Scoring API ───────────────────────────────────────────────
+  api:
+    build: .
+    image: scam-intelligence-api:latest
+    container_name: scam_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models:ro    # Mount models as read-only
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+
+  # ─── MLflow Experiment Tracking ───────────────────────────────────────────
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: mlflow_server
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri /mlflow/mlruns
+      --default-artifact-root /mlflow/mlruns
+    restart: unless-stopped

@@ -1,0 +1,149 @@
+stages:
+
+  # ─── Stage 01: Merge ────────────────────────────────────────────────────────
+  merge:
+    cmd: python scripts/01_load_merge.py
+    deps:
+      - data/raw/train_transaction.csv
+      - data/raw/train_identity.csv
+      - scripts/01_load_merge.py
+      - src/data_io/load.py
+    outs:
+      - data/interim/01_merged.parquet
+    metrics:
+      - reports/audit_01_merged.json:
+          cache: false
+
+  # ─── Stage 02: Audit ────────────────────────────────────────────────────────
+  audit:
+    cmd: python scripts/02_audit_merged.py
+    deps:
+      - data/interim/01_merged.parquet
+      - scripts/02_audit_merged.py
+      - src/audit/audit_report.py
+    metrics:
+      - reports/audit_01_merged.json:
+          cache: false
+
+  # ─── Stage 03: Clean ────────────────────────────────────────────────────────
+  clean:
+    cmd: python scripts/03_clean_merged.py
+    deps:
+      - data/interim/01_merged.parquet
+      - scripts/03_clean_merged.py
+      - src/cleaning/clean.py
+    outs:
+      - data/interim/02_cleaned.parquet
+    metrics:
+      - reports/cleaning_02_cleaned.json:
+          cache: false
+
+  # ─── Stage 04: Features ─────────────────────────────────────────────────────
+  features:
+    cmd: python scripts/04_build_features.py
+    deps:
+      - data/interim/02_cleaned.parquet
+      - scripts/04_build_features.py
+      - src/features/build_features.py
+    outs:
+      - data/interim/03_features.parquet
+    metrics:
+      - reports/features_03_features.json:
+          cache: false
+
+  # ─── Stage 05: Labels ────────────────────────────────────────────────────────
+  label:
+    cmd: python scripts/05_label_early_warning.py
+    deps:
+      - data/interim/03_features.parquet
+      - scripts/05_label_early_warning.py
+      - src/labels/early_warning.py
+    outs:
+      - data/interim/04_labeled.parquet
+    metrics:
+      - reports/labels_04_labeled.json:
+          cache: false
+
+  # ─── Stage 06: Split ────────────────────────────────────────────────────────
+  split:
+    cmd: python scripts/06_time_split.py
+    deps:
+      - data/interim/04_labeled.parquet
+      - scripts/06_time_split.py
+      - src/split/time_split.py
+    outs:
+      - data/processed/dataset_v1.parquet
+    metrics:
+      - reports/split_v1.json:
+          cache: false
+
+  # ─── Stage 07: Baseline ──────────────────────────────────────────────────────
+  train_baseline:
+    cmd: python scripts/07_train_baseline.py
+    deps:
+      - data/processed/dataset_v1.parquet
+      - scripts/07_train_baseline.py
+      - src/modeling/baseline_pipeline.py
+    outs:
+      - models/baseline_lr.joblib
+    metrics:
+      - reports/baseline_lr_metrics.json:
+          cache: false
+
+  # ─── Stage 08: Torch MLP ─────────────────────────────────────────────────────
+  train_torch:
+    cmd: python scripts/08_train_torch_mlp.py
+    deps:
+      - data/processed/dataset_v1.parquet
+      - scripts/08_train_torch_mlp.py
+      - src/modeling/torch_mlp.py
+    outs:
+      - models/torch_mlp.pt
+      - models/torch_feature_schema.json
+    metrics:
+      - reports/torch_mlp_metrics.json:
+          cache: false
+
+  # ─── Stage 08b: Temperature Scaling ─────────────────────────────────────────
+  calibrate:
+    cmd: python scripts/08b_fit_temperature.py
+    deps:
+      - data/processed/dataset_v1.parquet
+      - models/torch_mlp.pt
+      - scripts/08b_fit_temperature.py
+    outs:
+      - models/torch_temperature.json
+
+  # ─── Stage 09: Evaluate ──────────────────────────────────────────────────────
+  evaluate:
+    cmd: python scripts/09_evaluate_models.py
+    deps:
+      - data/processed/dataset_v1.parquet
+      - models/baseline_lr.joblib
+      - models/torch_mlp.pt
+      - models/torch_temperature.json
+      - scripts/09_evaluate_models.py
+      - src/evaluation/metrics.py
+      - src/inference/torch_infer.py
+    outs:
+      - reports/pr_curves.png:
+          cache: false
+      - reports/calibration_curves.png:
+          cache: false
+    metrics:
+      - reports/model_comparison.json:
+          cache: false
+
+  # ─── Stage 10: Risk Bands ────────────────────────────────────────────────────
+  risk_bands:
+    cmd: python scripts/10_risk_bands.py
+    deps:
+      - data/processed/dataset_v1.parquet
+      - models/torch_mlp.pt
+      - models/torch_temperature.json
+      - scripts/10_risk_bands.py
+    outs:
+      - data/outputs/test_scored.parquet
+    metrics:
+      - reports/risk_band_summary.json:
+          cache: false

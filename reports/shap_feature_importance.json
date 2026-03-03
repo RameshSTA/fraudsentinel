@@ -1,0 +1,51 @@
+{
+  "method": "SHAP LinearExplainer",
+  "model": "LogisticRegression (numeric SHAP slice from full pipeline)",
+  "n_samples_explained": 2000,
+  "feature_importance": [
+    {
+      "feature": "cnt_1h",
+      "mean_abs_shap": 0.07616468776415186
+    },
+    {
+      "feature": "cnt_24h",
+      "mean_abs_shap": 0.04743994992184482
+    },
+    {
+      "feature": "fp_growth_ratio_24h_over_72h",
+      "mean_abs_shap": 0.042792922661652216
+    },
+    {
+      "feature": "mean_amt_7d_hist",
+      "mean_abs_shap": 0.03674431746978683
+    },
+    {
+      "feature": "std_amt_7d_hist",
+      "mean_abs_shap": 0.0338687911442615
+    },
+    {
+      "feature": "TransactionAmt",
+      "mean_abs_shap": 0.018308162098862317
+    },
+    {
+      "feature": "avg_amt_24h",
+      "mean_abs_shap": 0.0022516847853531786
+    },
+    {
+      "feature": "sum_amt_1h",
+      "mean_abs_shap": 0.0016530618134380968
+    },
+    {
+      "feature": "fp_cnt_24h",
+      "mean_abs_shap": 0.0013450689373322605
+    },
+    {
+      "feature": "fp_cnt_72h",
+      "mean_abs_shap": 0.00030464885878009687
+    },
+    {
+      "feature": "z_amt_vs_7d",
+      "mean_abs_shap": 1.0434446394186139e-05
+    }
+  ]
+}

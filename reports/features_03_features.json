@@ -1,0 +1,28 @@
+{
+  "rows": 590540,
+  "cols": 21,
+  "engineered_columns_present": [
+    "cnt_1h",
+    "sum_amt_1h",
+    "cnt_24h",
+    "avg_amt_24h",
+    "mean_amt_7d_hist",
+    "std_amt_7d_hist",
+    "z_amt_vs_7d",
+    "fp_cnt_24h",
+    "fp_cnt_72h",
+    "fp_growth_ratio_24h_over_72h"
+  ],
+  "missingness_pct_engineered": {
+    "cnt_1h": 0.0,
+    "sum_amt_1h": 0.0,
+    "cnt_24h": 0.0,
+    "avg_amt_24h": 0.0,
+    "mean_amt_7d_hist": 0.0,
+    "std_amt_7d_hist": 0.0,
+    "z_amt_vs_7d": 23.38249737528364,
+    "fp_cnt_24h": 0.0,
+    "fp_cnt_72h": 0.0,
+    "fp_growth_ratio_24h_over_72h": 0.0
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "dataset": {
+    "rows_valid": 88581,
+    "rows_test": 88580
+  },
+  "base_rate": 0.027794084443440958,
+  "models": {
+    "baseline_lr": {
+      "valid": {
+        "metrics": {
+          "auc_roc": 0.7881762102153628,
+          "avg_precision": 0.128577951692319,
+          "brier": 0.14920858480799765
+        },
+        "threshold": {
+          "best_threshold": 0.7465085534432342,
+          "best_f1": 0.2234395271726712,
+          "precision_at_best": 0.17341687178339674,
+          "recall_at_best": 0.3140194489465154
+        }
+      },
+      "test": {
+        "metrics": {
+          "auc_roc": 0.7611637577209016,
+          "avg_precision": 0.08532950149648565,
+          "brier": 0.16322752958904893
+        }
+      }
+    },
+    "torch_mlp_calibrated": {
+      "valid": {
+        "metrics": {
+          "auc_roc": 0.7962695298351053,
+          "avg_precision": 0.13552852272781327,
+          "brier": 0.14367571393635345
+        },
+        "threshold": {
+          "best_threshold": 0.8151677846908569,
+          "best_f1": 0.23272941523005725,
+          "precision_at_best": 0.18282804906271696,
+          "recall_at_best": 0.320097244732577
+        }
+      },
+      "test": {
+        "metrics": {
+          "auc_roc": 0.7600595660321283,
+          "avg_precision": 0.09741875851753141,
+          "brier": 0.1535541868104076
+        },
+        "lift_at_k": {
+          "top_1.0pct_precision": 0.103954802259887,
+          "top_1.0pct_recall": 0.03736799350121852,
+          "top_1.0pct_lift": 3.740177247839476,
+          "top_3.0pct_precision": 0.1618366578848325,
+          "top_3.0pct_recall": 0.17465475223395613,
+          "top_3.0pct_lift": 5.822701525360871,
+          "top_8.0pct_precision": 0.1305390911656788,
+          "top_8.0pct_recall": 0.37571080422420794,
+          "top_8.0pct_lift": 4.696650160623813
+        }
+      }
+    }
+  },
+  "notes": "Torch MLP is the primary model (temperature calibrated). Baseline LR provides an interpretable benchmark."
+}

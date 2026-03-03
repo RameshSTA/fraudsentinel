@@ -1,0 +1,32 @@
+{
+  "time_col": "TransactionDT",
+  "train_quantile": 0.7,
+  "valid_quantile": 0.85,
+  "train_end": 10438003,
+  "valid_end": 13151880,
+  "dt_min": 86400,
+  "dt_max": 15811131,
+  "rows": 590540,
+  "split_counts": {
+    "train": 413379,
+    "valid": 88581,
+    "test": 88580
+  },
+  "label_by_split": {
+    "test": {
+      "count": 88580,
+      "positive": 2462,
+      "positive_rate_pct": 2.779408444344096
+    },
+    "train": {
+      "count": 413379,
+      "positive": 11930,
+      "positive_rate_pct": 2.885971469281216
+    },
+    "valid": {
+      "count": 88581,
+      "positive": 2468,
+      "positive_rate_pct": 2.786150528894458
+    }
+  }
+}
