@@ -20,7 +20,7 @@ FraudSentinel is an end-to-end machine learning system built on 590,540 real pay
 
 | Report | Description | Open |
 |--------|-------------|------|
-| **Drift Monitoring Dashboard** | Interactive per-feature distribution comparison, KS drift tests, score shift alert — powered by Evidently AI | [**Open Report**](https://htmlpreview.github.io/?https://github.com/RameshSTA/fraudsentinel/blob/main/reports/drift_monitoring_report.html) |
+| **Drift Monitoring Dashboard** | Interactive per-feature distribution comparison, KS drift tests, score shift alert — powered by Evidently AI | [**Open Report**](https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html) |
 | **Precision-Recall Curves** | Model comparison on temporal test set | [View](reports/pr_curves.png) |
 | **Calibration Curves** | Post-temperature-scaling calibration for both models | [View](reports/calibration_curves.png) |
 | **SHAP Feature Importance** | Global attribution across 2,000 test samples | [View](reports/figures/shap_global_importance.png) |
@@ -393,7 +393,7 @@ open reports/drift_monitoring_report.html   # open locally on macOS
 
 Or view it directly online without running anything:
 
-[![Open Live Drift Report](https://img.shields.io/badge/Drift_Report-Open_Interactive_Dashboard-orange.svg)](https://htmlpreview.github.io/?https://github.com/RameshSTA/fraudsentinel/blob/main/reports/drift_monitoring_report.html)
+[![Open Live Drift Report](https://img.shields.io/badge/Drift_Report-Open_Interactive_Dashboard-orange.svg)](https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html)
 
 The report (`reports/drift_monitoring_report.html`, 3.4 MB) provides:
 
@@ -491,7 +491,7 @@ make mlflow-ui
 ```bash
 make monitor
 open reports/drift_monitoring_report.html   # opens locally on macOS
-# Or view online: https://htmlpreview.github.io/?https://github.com/RameshSTA/fraudsentinel/blob/main/reports/drift_monitoring_report.html
+# Or view online: https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html
 ```
 
 ### Docker deployment
