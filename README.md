@@ -418,7 +418,7 @@ The machine-readable output (`reports/drift_metrics.json`) is designed to integr
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/fraudsentinel.git
+git clone https://github.com/RameshSTA/fraudsentinel.git
 cd fraudsentinel
 
 python3 -m venv .venv
