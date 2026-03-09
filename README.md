@@ -1,29 +1,121 @@
-# FraudSentinel
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a2c4e,100:4a6b9e&height=230&section=header&text=FraudSentinel&fontColor=ffffff&fontSize=68&fontAlignY=40&desc=Proactive%20Payment%20Fraud%20Intelligence&descColor=b8cceb&descSize=22&descAlignY=63" width="100%" alt="FraudSentinel"/>
+</div>
 
-Proactive payment fraud intelligence — early-warning risk scoring for operations teams.
+<div align="center">
 
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://python.org)
-[![PyTorch 2.0](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-REST_API-teal.svg)](https://fastapi.tiangolo.com)
-[![MLflow](https://img.shields.io/badge/MLflow-Tracked-blue.svg)](https://mlflow.org)
-[![Tests](https://img.shields.io/badge/Tests-50_Passing-green.svg)](tests/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ramesh-blue.svg)](https://www.linkedin.com/in/rameshsta/)
+[![Python](https://img.shields.io/badge/Python-3.9+-3572A5?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)](https://pytorch.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-REST%20API-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![MLflow](https://img.shields.io/badge/MLflow-Tracked-0194E2?style=flat-square&logo=mlflow&logoColor=white)](https://mlflow.org)
+[![Tests](https://img.shields.io/badge/Tests-50%20Passing-2ea043?style=flat-square&logo=pytest&logoColor=white)](tests/)
+[![License](https://img.shields.io/badge/License-MIT-f0a500?style=flat-square)](LICENSE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ramesh%20Shrestha-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rameshsta/)
+
+</div>
+
+<br/>
+
+<p align="center">
+An end-to-end machine learning system built on <b>590,540 real payment transactions</b> from the IEEE-CIS dataset.<br/>
+Ranks every transaction by the probability that the originating entity will commit fraud within the next 72 hours,<br/>
+then assigns each to a risk band that maps directly to an operational action.
+</p>
+
+<br/>
 
 ---
 
-FraudSentinel is an end-to-end machine learning system built on 590,540 real payment transactions from the IEEE-CIS dataset. It ranks every transaction by the probability that the originating entity will commit fraud within the next 72 hours, then assigns each transaction to a risk band that maps directly to an operational action. Reviewing only the top 8% of scored traffic captures **37.6% of all fraud** — a **4.7× improvement** over random review at the same cost.
+## Performance at a Glance
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center" width="190">
+      <br/>
+      <strong style="font-size:1.4em">37.6%</strong>
+      <br/>fraud captured
+      <br/><sub>reviewing top 8% of traffic</sub>
+      <br/><br/>
+    </td>
+    <td align="center" width="190">
+      <br/>
+      <strong style="font-size:1.4em">4.7×</strong>
+      <br/>lift over random
+      <br/><sub>at identical review cost</sub>
+      <br/><br/>
+    </td>
+    <td align="center" width="190">
+      <br/>
+      <strong style="font-size:1.4em">7×</strong>
+      <br/>lift in the top 3%
+      <br/><sub>19.5% precision vs 2.78% base</sub>
+      <br/><br/>
+    </td>
+    <td align="center" width="190">
+      <br/>
+      <strong style="font-size:1.4em">0.097</strong>
+      <br/>AUC-PR (production MLP)
+      <br/><sub>3.5× no-skill baseline</sub>
+      <br/><br/>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+> For a team reviewing 500,000 transactions per month at 8% capacity — from approximately **1,100 fraud cases caught** to approximately **18,800 cases** — with no additional headcount.
 
 ---
 
 ## Live Reports
 
-| Report | Description | Open |
-|--------|-------------|------|
-| **Drift Monitoring Dashboard** | Interactive per-feature distribution comparison, KS drift tests, score shift alert — powered by Evidently AI | [**Open Report**](https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html) |
-| **Precision-Recall Curves** | Model comparison on temporal test set | [View](reports/pr_curves.png) |
-| **Calibration Curves** | Post-temperature-scaling calibration for both models | [View](reports/calibration_curves.png) |
-| **SHAP Feature Importance** | Global attribution across 2,000 test samples | [View](reports/figures/shap_global_importance.png) |
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="reports/pr_curves.png">
+        <img src="reports/pr_curves.png" width="96%" alt="Precision-Recall Curves"/>
+      </a>
+      <br/><b>Precision-Recall Curves</b>
+      <br/><sub>MLP vs Logistic Regression on the temporal test set · both exceed the 2.78% no-skill baseline</sub>
+      <br/><br/>
+    </td>
+    <td align="center" width="50%">
+      <a href="reports/calibration_curves.png">
+        <img src="reports/calibration_curves.png" width="96%" alt="Calibration Curves"/>
+      </a>
+      <br/><b>Calibration Curves</b>
+      <br/><sub>Post-temperature-scaling calibration · Brier score improved from 0.163 → 0.154</sub>
+      <br/><br/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="reports/figures/shap_global_importance.png">
+        <img src="reports/figures/shap_global_importance.png" width="96%" alt="SHAP Feature Importance"/>
+      </a>
+      <br/><b>SHAP Feature Importance</b>
+      <br/><sub>Global attribution via LinearExplainer over 2,000 test samples · <code>cnt_1h</code> dominates</sub>
+      <br/><br/>
+    </td>
+    <td align="center" width="50%">
+      <br/><br/><br/>
+      <b>Drift Monitoring Dashboard</b>
+      <br/><sub>Interactive per-feature distribution comparison · KS drift tests · score shift alert</sub>
+      <br/><sub>Powered by Evidently AI · fully self-contained HTML · no server required</sub>
+      <br/><br/>
+      <a href="https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html">
+        <img src="https://img.shields.io/badge/Open%20Interactive%20Report-View%20Live%20Dashboard-orange?style=for-the-badge&logo=databricks&logoColor=white" alt="Open Live Drift Report"/>
+      </a>
+      <br/><br/><br/>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ---
 
@@ -99,35 +191,33 @@ Three additional design decisions follow from this framing.
 
 The following results are computed on the temporal test set, which contains the chronologically latest 15% of the dataset (88,580 transactions). No test data was used in training or validation.
 
-### Operational performance
+### Operational Performance
 
-| Review tier | Traffic reviewed | Fraud cases captured | Precision | Lift over random |
-|---|---|---|---|---|
-| Top 1% (Critical band) | 886 transactions | 92 cases, 3.7% recall | 10.4% | 3.7x |
-| Top 3% (Critical + High) | 2,658 transactions | 430 cases, 17.5% recall | 16.2% | 5.8x |
-| Top 8% (Critical + High + Medium) | 7,087 transactions | 925 cases, 37.6% recall | 13.1% | 4.7x |
-| All traffic (no ranking) | 88,580 transactions | 2,462 total fraud cases | 2.78% | 1.0x |
+| Review Tier | Traffic Reviewed | Fraud Cases Captured | Precision | Lift over Random |
+|:---|:---|:---|:---:|:---:|
+| Top 1% — Critical band | 886 transactions | 92 cases · 3.7% recall | 10.4% | 3.7× |
+| Top 3% — Critical + High | 2,658 transactions | 430 cases · 17.5% recall | 16.2% | 5.8× |
+| **Top 8% — Critical + High + Medium** | **7,087 transactions** | **925 cases · 37.6% recall** | **13.1%** | **4.7×** |
+| All traffic (no ranking) | 88,580 transactions | 2,462 total fraud cases | 2.78% | 1.0× |
 
-Reviewing the top 8% without FraudSentinel's ranking would catch 2.78% of fraud — the population base rate. With FraudSentinel, the same review budget catches 37.6%. For a team reviewing 500,000 transactions per month at 8% capacity, this translates from approximately 1,100 fraud cases caught to approximately 18,800 cases — with no additional headcount.
-
-### Model metrics
+### Model Metrics
 
 | Model | AUC-ROC | AUC-PR | Brier Score |
-|---|---|---|---|
+|:---|:---:|:---:|:---:|
 | Majority-class baseline | 0.500 | 0.028 | 0.027 |
 | Logistic Regression pipeline | 0.761 | 0.085 | 0.163 |
-| Torch MLP with embeddings (production) | 0.760 | 0.097 | 0.154 |
+| **Torch MLP with embeddings (production)** | **0.760** | **0.097** | **0.154** |
 
-AUC-PR is the primary evaluation metric. On a dataset with a 2.78% fraud rate, AUC-ROC is misleading — a model that predicts all negatives still achieves AUC-ROC above 0.90 in some configurations. AUC-PR directly measures discriminative power over the minority class that matters. The production MLP achieves AUC-PR of 0.097, a 3.5x improvement over the 0.028 no-skill baseline.
+AUC-PR is the primary evaluation metric. On a dataset with a 2.78% fraud rate, AUC-ROC is misleading — a model that predicts all negatives still achieves AUC-ROC above 0.90 in some configurations. AUC-PR directly measures discriminative power over the minority class that matters. The production MLP achieves AUC-PR of 0.097, a **3.5× improvement** over the 0.028 no-skill baseline.
 
 ---
 
 ## System Architecture
 
 <div align="center">
-  <img src="assets/architecture.png" alt="FraudSentinel pipeline architecture" width="520"/>
-  <br/>
-  <sub>The eleven-stage pipeline from raw transaction data to real-time risk scores and drift monitoring.</sub>
+  <img src="assets/architecture.png" width="640" alt="FraudSentinel pipeline architecture"/>
+  <br/><br/>
+  <sub>The eleven-stage pipeline — from raw transaction data to real-time risk scores and drift monitoring.</sub>
 </div>
 
 <br/>
@@ -135,7 +225,7 @@ AUC-PR is the primary evaluation metric. On a dataset with a 2.78% fraud rate, A
 The pipeline is structured as eleven sequential stages, each producing a deterministic output consumed by the next stage. Running `make pipeline` executes all eleven stages end-to-end in approximately fifteen minutes, reproducibly from raw CSV inputs.
 
 | Stage | Script | Input | Output |
-|---|---|---|---|
+|:---:|:---|:---|:---|
 | 01 | `01_load_merge.py` | Raw transaction + identity CSVs | `01_merged.parquet` |
 | 02 | `02_audit_merged.py` | Merged dataset | `audit_01_merged.json` |
 | 03 | `03_clean_merged.py` | Merged dataset | `02_cleaned.parquet` |
@@ -176,12 +266,12 @@ First, the dataset is split by transaction timestamp. The test set contains only
 
 Eleven features are engineered from the raw transaction and identity data, organised into three signal families. All features are computed using only information available at or before the transaction timestamp.
 
-### Entity velocity
+### Entity Velocity
 
 Fraudsters characteristically burst multiple transactions in a short window before accounts are blocked. Entity velocity features capture this pattern directly.
 
 | Feature | Definition |
-|---|---|
+|:---|:---|
 | `cnt_1h` | Number of transactions by this entity in the past hour |
 | `sum_amt_1h` | Total amount transacted by this entity in the past hour |
 | `cnt_24h` | Number of transactions by this entity in the past 24 hours |
@@ -189,24 +279,24 @@ Fraudsters characteristically burst multiple transactions in a short window befo
 
 The entity key used for velocity grouping is `card1 || card2 || card3 || card5 || addr1`. A sudden increase in `cnt_1h` from a baseline of one or two transactions to ten or more is the strongest available signal that a fraud burst is in progress — confirmed by SHAP analysis, where `cnt_1h` accounts for significantly more predictive weight than any other feature.
 
-### Behavioural baseline deviation
+### Behavioural Baseline Deviation
 
 A $2,000 transaction is normal for one entity and catastrophic for another. These features establish a personalised baseline for each entity and measure how far the current transaction deviates from it.
 
 | Feature | Definition |
-|---|---|
+|:---|:---|
 | `mean_amt_7d_hist` | Rolling 7-day average transaction amount, excluding the current row |
 | `std_amt_7d_hist` | Rolling 7-day standard deviation of transaction amounts |
 | `z_amt_vs_7d` | `(TransactionAmt − mean_amt_7d_hist) / (std_amt_7d_hist + ε)` |
 
 The z-score directly quantifies how anomalous the current transaction is relative to the entity's established spending pattern. A z-score of 8 means the transaction amount is eight standard deviations above the entity's seven-day norm — an event that, under a normal distribution, would occur approximately once in 800 billion observations.
 
-### Fraud campaign propagation
+### Fraud Campaign Propagation
 
 Organised fraud attacks reuse infrastructure. The same device type, email domain, and product category appear across many transactions in a coordinated campaign. These features detect the acceleration of campaign activity.
 
 | Feature | Definition |
-|---|---|
+|:---|:---|
 | `fp_cnt_24h` | Transactions sharing this device + email domain + product combination in the past 24 hours |
 | `fp_cnt_72h` | Same fingerprint count over 72 hours |
 | `fp_growth_ratio_24h_over_72h` | `fp_cnt_24h / (fp_cnt_72h + ε)` |
@@ -220,24 +310,24 @@ The fingerprint key is `DeviceInfo || P_emaildomain || ProductCD`. When the 24-h
 Two models are trained on the same features and evaluated on the same temporal test set. This is a deliberate architectural choice, not an accident of iteration.
 
 <div align="center">
-  <img src="assets/model_decision.png" alt="Model decision flow from features to operational action" width="440"/>
-  <br/>
+  <img src="assets/model_decision.png" width="500" alt="Model decision flow from features to operational action"/>
+  <br/><br/>
   <sub>From engineered features to calibrated risk score to operational action recommendation.</sub>
 </div>
 
 <br/>
 
-### Logistic Regression (interpretable baseline)
+### Logistic Regression — Interpretable Baseline
 
 Financial regulators including the FCA, OCC, and European Banking Authority require that automated decisions affecting customers be explainable at the individual transaction level. The Logistic Regression pipeline fulfils this requirement. It uses a FeatureHasher with 2¹⁸ buckets for entity and fingerprint keys, a SimpleImputer and StandardScaler for numeric features, and a OneHotEncoder for categorical features — all inside a single scikit-learn Pipeline that guarantees preprocessing consistency between training and inference.
 
 Its test AUC-ROC of 0.761 versus the MLP's 0.760 demonstrates that the engineered features carry most of the predictive signal. Model complexity alone does not close the gap — feature quality does.
 
-### Torch MLP with entity embeddings (production model)
+### Torch MLP with Entity Embeddings — Production Model
 
 The production model extends the interpretable baseline with two capabilities the Logistic Regression cannot provide: entity-level learned representations and non-linear feature interactions.
 
-Entity embeddings work by hashing the composite entity key to an integer bucket and then looking up a learned dense vector in an embedding layer — the same technique used in large-scale recommendation systems at companies like Netflix, YouTube, and Spotify. Rather than representing each entity as a sparse one-hot vector, the model learns a 32-dimensional dense vector that encodes the entity's historical risk profile across all its training-set appearances. For entities not seen during training, the hash function distributes them to buckets shared with statistically similar entities — the system degrades gracefully rather than returning zero signal.
+Entity embeddings work by hashing the composite entity key to an integer bucket and then looking up a learned dense vector in an embedding layer — the same technique used in large-scale recommendation systems at companies like Netflix, YouTube, and Spotify. Rather than representing each entity as a sparse one-hot vector, the model learns a 32-dimensional dense vector that encodes the entity's historical risk profile. For entities not seen during training, the hash function distributes them to buckets shared with statistically similar entities — the system degrades gracefully rather than returning zero signal.
 
 The full architecture is:
 
@@ -257,7 +347,7 @@ Input
 ```
 
 | Hyperparameter | Value | Reason |
-|---|---|---|
+|:---|:---|:---|
 | Optimiser | AdamW, lr = 3e-4, weight decay = 1e-4 | Weight decay prevents embedding overfitting |
 | Loss | BCEWithLogitsLoss, pos_weight = 34.7 | Corrects the 35:1 class imbalance |
 | Early stopping | Patience 3, monitor validation AUC-PR | Prevents majority-class memorisation |
@@ -265,21 +355,21 @@ Input
 | Max epochs | 15 (early stopping triggered at epoch 5) | Convergence confirmed by AUC-PR plateau |
 | Device | Apple MPS, CUDA, or CPU (auto-detected) | Portable across hardware without code changes |
 
-The MLP achieves AUC-PR 0.097 versus the LR baseline's 0.085 — a 14% relative improvement — because entity embeddings and non-linear layers capture interaction effects between velocity, baseline deviation, and campaign signals that a linear model cannot represent.
+The MLP achieves AUC-PR 0.097 versus the LR baseline's 0.085 — a **14% relative improvement** — because entity embeddings and non-linear layers capture interaction effects between velocity, baseline deviation, and campaign signals that a linear model cannot represent.
 
 ---
 
 ## Probability Calibration
 
 <div align="center">
-  <img src="reports/calibration_curves.png" alt="Calibration curves for both models on the temporal test set" width="680"/>
-  <br/>
-  <sub>Post-calibration curves for both models. The gap from the diagonal reflects the 2.78% base rate — the observable fraud fraction in any score bucket is naturally low. Both models reliably rank risk in the correct order.</sub>
+  <img src="reports/calibration_curves.png" width="700" alt="Calibration curves for both models on the temporal test set"/>
+  <br/><br/>
+  <sub>Post-calibration curves for both models on the temporal test set. The gap from the diagonal reflects the 2.78% base rate.<br/>Both models reliably rank risk in the correct order after temperature scaling.</sub>
 </div>
 
 <br/>
 
-Raw neural network outputs are not reliable probabilities. A network trained with a heavily weighted positive class will produce outputs compressed toward the high end of the score range, making a score of 0.9 mean very different things on different days depending on the score distribution. Operations analysts who observe this inconsistency lose trust in the model and revert to manual judgment — which defeats the purpose of the system.
+Raw neural network outputs are not reliable probabilities. A network trained with a heavily weighted positive class will produce outputs compressed toward the high end of the score range, making a score of 0.9 mean very different things on different days depending on the score distribution. Operations analysts who observe this inconsistency lose trust in the model and revert to manual judgment.
 
 Temperature scaling addresses this with a single learned parameter `T`:
 
@@ -289,16 +379,16 @@ P_calibrated = sigmoid(logit / T)     where T = 1.033
 
 `T` is found by minimising log-loss on the held-out validation set using LBFGS, a limited-memory quasi-Newton optimiser. Because temperature scaling has only one parameter, it cannot overfit even on moderate-size validation sets. Because it is a monotonic transformation of the logit, it perfectly preserves the ranking of all transactions — the model's discriminative capability is not affected, only the score magnitudes.
 
-After calibration, the Brier score improves from 0.163 to 0.154, confirming better probability alignment on the test set. Calibrated scores can be read by analysts as meaningful risk probabilities and used directly in downstream pricing, insurance, or credit systems.
+After calibration, the Brier score improves from 0.163 to 0.154, confirming better probability alignment on the test set.
 
 ---
 
 ## Training and Inference
 
 <div align="center">
-  <img src="assets/training_inference.png" alt="Training pipeline versus inference pipeline" width="640"/>
-  <br/>
-  <sub>Training and inference are cleanly separated. Feature logic lives in <code>src/</code> and is shared by both, eliminating training-serving skew.</sub>
+  <img src="assets/training_inference.png" width="680" alt="Training pipeline versus inference pipeline"/>
+  <br/><br/>
+  <sub>Training and inference are cleanly separated. Feature logic lives in <code>src/</code> and is shared by both,<br/>making training-serving skew architecturally impossible.</sub>
 </div>
 
 <br/>
@@ -314,38 +404,38 @@ This architecture makes training-serving skew architecturally impossible. Traini
 ## Risk Bands
 
 <div align="center">
-  <img src="assets/risk_banding.png" alt="Risk banding and capacity policy funnel" width="480"/>
-  <br/>
-  <sub>Capacity-aligned risk funnel. The review queue always matches operational headcount, regardless of score distribution shifts over time.</sub>
+  <img src="assets/risk_banding.png" width="520" alt="Risk banding and capacity policy funnel"/>
+  <br/><br/>
+  <sub>Capacity-aligned risk funnel. The review queue always matches operational headcount,<br/>regardless of score distribution shifts over time.</sub>
 </div>
 
 <br/>
 
-### Why capacity-based thresholds?
+### Why Capacity-Based Thresholds?
 
 The conventional approach — flag every transaction above a score of 0.5, or above the threshold that maximises F1 on the validation set — produces a review queue that changes size every time the score distribution shifts. When transaction volume spikes, or when new fraud patterns change the model's output distribution, the queue can grow to ten times the team's review capacity or shrink to near zero. Both outcomes require manual intervention to fix.
 
-FraudSentinel defines bands by traffic percentile, not by score value. The Critical band always contains the top 1% of transactions by risk score — exactly the number of transactions that can be reviewed immediately regardless of what the scores look like this week. When score distributions shift, the queue size stays constant. Recalibration happens only at planned model refreshes, not in production.
+FraudSentinel defines bands by traffic percentile, not by score value. The Critical band always contains the top 1% of transactions by risk score — exactly the number of transactions that can be reviewed immediately regardless of what the scores look like this week.
 
-### Band definitions and actions
+### Band Definitions and Actions
 
-| Band | Traffic | Score cutoff | Precision | Recommended action |
-|---|---|---|---|---|
-| Critical | Top 1% — 886 transactions | 0.944 and above | 10.4% | Block transaction and route to immediate manual review |
-| High | Top 1–3% — 1,772 transactions | 0.898 and above | 19.1% | Require step-up authentication before completing transaction |
-| Medium | Top 3–8% — 4,429 transactions | 0.739 and above | 11.2% | Monitor, apply velocity rules, add to delayed review queue |
-| Low | Bottom 92% — 81,493 transactions | Below 0.739 | 1.9% | Auto-approve with standard monitoring |
+| Band | Traffic | Score Cutoff | Precision | Recommended Action |
+|:---:|:---|:---:|:---:|:---|
+| **Critical** | Top 1% — 886 transactions | ≥ 0.944 | 10.4% | Block and route to immediate manual review |
+| **High** | Top 1–3% — 1,772 transactions | ≥ 0.898 | **19.1%** | Require step-up authentication |
+| **Medium** | Top 3–8% — 4,429 transactions | ≥ 0.739 | 11.2% | Monitor · apply velocity rules · delayed review queue |
+| **Low** | Bottom 92% — 81,493 transactions | < 0.739 | 1.9% | Auto-approve with standard monitoring |
 
-The High band (top 1–3%) is the most operationally efficient tier: 19.1% precision means one in every five reviews in this queue identifies a confirmed fraud case. Random review yields one in thirty-six. Every reviewer hour allocated to this queue is approximately seven times more productive than an unguided queue.
+The High band (top 1–3%) is the most operationally efficient tier: 19.1% precision means one in every five reviews in this queue identifies a confirmed fraud case. Random review yields one in thirty-six. Every reviewer hour allocated to this queue is approximately **seven times more productive** than an unguided queue.
 
 ---
 
 ## Model Explainability
 
 <div align="center">
-  <img src="reports/figures/shap_global_importance.png" alt="SHAP global feature importance" width="700"/>
-  <br/>
-  <sub>Global feature importance computed via SHAP LinearExplainer over 2,000 test-set samples across the full preprocessing pipeline.</sub>
+  <img src="reports/figures/shap_global_importance.png" width="720" alt="SHAP global feature importance"/>
+  <br/><br/>
+  <sub>Global feature importance computed via SHAP LinearExplainer over 2,000 test-set samples<br/>across the full 262,144-dimension preprocessing pipeline.</sub>
 </div>
 
 <br/>
@@ -362,16 +452,16 @@ The behavioural baseline features (`mean_amt_7d_hist` and `std_amt_7d_hist`) ran
 
 The raw transaction amount (`TransactionAmt`) ranks sixth — substantially less important than the velocity and baseline features. This aligns with empirical fraud research: absolute amount is a weak predictor. Amount relative to the entity's established history is a strong predictor.
 
-This feature ranking can be used directly in operations to generate human-readable alert narratives: an entity flagged primarily because of `cnt_1h` receives an explanation such as "flagged for unusually high transaction frequency in the past hour relative to this entity's history," rather than an opaque risk score.
+This feature ranking can be used directly in operations to generate human-readable alert narratives: an entity flagged primarily because of `cnt_1h` receives an explanation such as *"flagged for unusually high transaction frequency in the past hour relative to this entity's history"* — rather than an opaque risk score.
 
 ---
 
 ## Precision-Recall Performance
 
 <div align="center">
-  <img src="reports/pr_curves.png" alt="Precision-Recall curves on temporal test set" width="700"/>
-  <br/>
-  <sub>Precision-Recall curves on the temporal test set. Both models consistently outperform the 2.78% no-skill baseline. The MLP achieves higher precision at low recall — the high-confidence operating region where the Critical and High bands sit.</sub>
+  <img src="reports/pr_curves.png" width="720" alt="Precision-Recall curves on temporal test set"/>
+  <br/><br/>
+  <sub>Precision-Recall curves on the temporal test set. Both models consistently outperform the 2.78% no-skill baseline.<br/>The MLP achieves higher precision at low recall — the high-confidence operating region where Critical and High bands sit.</sub>
 </div>
 
 <br/>
@@ -384,33 +474,37 @@ At recall values above 20%, the curves converge, reflecting the finding from SHA
 
 ## Drift Monitoring
 
-FraudSentinel includes a production-ready drift monitoring pipeline built on Evidently AI. After running `make monitor`, the system generates a fully self-contained interactive HTML report — no server required, no dependencies to install. Open it directly in any browser.
+FraudSentinel includes a production-ready drift monitoring pipeline built on Evidently AI. After running `make monitor`, the system generates a fully self-contained interactive HTML report — no server required, no dependencies to install.
 
 ```bash
 make monitor
-open reports/drift_monitoring_report.html   # open locally on macOS
+open reports/drift_monitoring_report.html   # macOS
 ```
 
 Or view it directly online without running anything:
 
-[![Open Live Drift Report](https://img.shields.io/badge/Drift_Report-Open_Interactive_Dashboard-orange.svg)](https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html)
+<div align="center">
+
+[![Open Live Drift Report](https://img.shields.io/badge/Open%20Interactive%20Drift%20Report-View%20Live%20Dashboard-orange?style=for-the-badge&logo=databricks&logoColor=white)](https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html)
+
+</div>
 
 The report (`reports/drift_monitoring_report.html`, 3.4 MB) provides:
 
 - Per-feature distribution comparison between the training reference and the current production window, rendered as interactive histograms with hover and zoom
 - Statistical drift detection via the Wasserstein distance and Kolmogorov-Smirnov test for each numeric feature
 - Model score distribution monitoring, with an alert when the mean score shifts by more than five percentage points
-- A global drift summary showing the fraction of features in drift, with a configurable threshold (default 30%) that triggers an operational alert
+- A global drift summary with a configurable threshold (default 30%) that triggers an operational alert
 
-### Current monitoring results
+### Current Monitoring Results
 
 | Metric | Value |
-|---|---|
+|:---|:---|
 | Features monitored | 11 |
 | Features with statistically significant drift | 11 |
 | Global drift alert | Active — 91.7% of features in drift |
 | Highest-drift feature | `fp_cnt_72h` (KS statistic 0.100) |
-| Score mean shift | Reference 0.028, current 0.305 — shift of 27.7 percentage points |
+| Score mean shift | Reference 0.028 → Current 0.305 — shift of 27.7 percentage points |
 
 The global alert is intentionally active in this demonstration. Production data was constructed from a temporally offset slice of the test set specifically to show the monitoring system operating under realistic drift conditions. In a live deployment, this alert would trigger an automated retraining pipeline or a notification to the ML platform team.
 
@@ -443,24 +537,24 @@ pre-commit install
 
 ### Dataset
 
-Download the IEEE-CIS Fraud Detection dataset from [Kaggle](https://www.kaggle.com/c/ieee-fraud-detection) and place both CSV files in the `data/raw/` directory:
+Download the IEEE-CIS Fraud Detection dataset from [Kaggle](https://www.kaggle.com/c/ieee-fraud-detection) and place both CSV files in `data/raw/`:
 
 ```
-data/raw/train_transaction.csv    (approximately 450 MB)
-data/raw/train_identity.csv       (approximately 30 MB)
+data/raw/train_transaction.csv    (~450 MB)
+data/raw/train_identity.csv       (~30 MB)
 ```
 
-### Running the pipeline
+### Running the Pipeline
 
 ```bash
-# Run all eleven stages end-to-end (approximately 15 minutes)
+# Full pipeline — all eleven stages end-to-end (~15 minutes)
 make pipeline
 
 # Or run stage groups individually
-make data        # Stages 01–03: ingest, audit, clean         (30 seconds)
-make features    # Stages 04–06: features, labels, split       (5 minutes)
-make train       # Stages 07–08b: train and calibrate          (12 minutes)
-make evaluate    # Stages 09–10: metrics, SHAP, risk bands     (2 minutes)
+make data        # Stages 01–03: ingest, audit, clean         (~30 seconds)
+make features    # Stages 04–06: features, labels, split       (~5 minutes)
+make train       # Stages 07–08b: train and calibrate          (~12 minutes)
+make evaluate    # Stages 09–10: metrics, SHAP, risk bands     (~2 minutes)
 ```
 
 ### Verification
@@ -475,26 +569,24 @@ make test
 ```bash
 make serve
 # FastAPI at http://localhost:8000
-# Interactive documentation at http://localhost:8000/docs
+# Interactive docs at http://localhost:8000/docs
 ```
 
-### Experiment tracking
+### Experiment Tracking
 
 ```bash
 make mlflow-ui
 # MLflow dashboard at http://localhost:5001
-# All training runs with hyperparameters, per-epoch metrics, and artefacts
 ```
 
-### Drift monitoring
+### Drift Monitoring
 
 ```bash
 make monitor
-open reports/drift_monitoring_report.html   # opens locally on macOS
-# Or view online: https://rameshsta.github.io/fraudsentinel/reports/drift_monitoring_report.html
+open reports/drift_monitoring_report.html
 ```
 
-### Docker deployment
+### Docker Deployment
 
 ```bash
 docker-compose up --build
@@ -504,9 +596,7 @@ docker-compose up --build
 
 ## API Reference
 
-### POST /score
-
-Score a single transaction in real time.
+### `POST /score` — Score a single transaction
 
 **Request**
 
@@ -549,9 +639,7 @@ curl -X POST http://localhost:8000/score \
 }
 ```
 
-### POST /score/batch
-
-Score up to 1,000 transactions in a single request.
+### `POST /score/batch` — Score up to 1,000 transactions
 
 ```bash
 curl -X POST http://localhost:8000/score/batch \
@@ -567,9 +655,7 @@ curl -X POST http://localhost:8000/score/batch \
 }
 ```
 
-### GET /health
-
-Liveness check confirming model load status and configuration.
+### `GET /health` — Liveness check
 
 ```bash
 curl http://localhost:8000/health
@@ -590,19 +676,19 @@ curl http://localhost:8000/health
 ## Engineering Practices
 
 | Practice | Implementation |
-|---|---|
-| No data leakage | Strict temporal split; `shift(1)` on all rolling baselines; velocity windows exclude the current transaction |
-| Full reproducibility | `make pipeline` reruns all eleven stages from raw CSVs; DVC tracks every stage input and output |
+|:---|:---|
+| No data leakage | Strict temporal split · `shift(1)` on all rolling baselines · velocity windows exclude the current transaction |
+| Full reproducibility | `make pipeline` reruns all eleven stages from raw CSVs · DVC tracks every stage input and output |
 | Experiment tracking | MLflow logs hyperparameters, per-epoch AUC-PR, loss curves, and model artefacts for every training run |
-| Probability calibration | Temperature scaling via LBFGS on validation set; calibration curves verified on held-out test set |
-| Explainability | SHAP LinearExplainer over the full 262,144-dimension feature pipeline; JSON export for downstream use |
-| DRY codebase | `src/utils/json_utils.py` serves five scripts; feature logic is shared between training and the FastAPI endpoint |
+| Probability calibration | Temperature scaling via LBFGS on validation set · calibration curves verified on held-out test set |
+| Explainability | SHAP LinearExplainer over the full 262,144-dimension feature pipeline · JSON export for downstream use |
+| DRY codebase | `src/utils/json_utils.py` serves five scripts · feature logic is shared between training and the FastAPI endpoint |
 | Code quality | pre-commit hooks for Black (formatting), Ruff (linting and import sorting), and detect-secrets |
 | Test suite | 50 unit tests covering feature leakage, label correctness, inference logic, and metric computation |
-| Type safety | Pydantic v2 validation on all API inputs; Python type hints throughout `src/` |
-| Deployment | FastAPI with async request handlers; Dockerfile and docker-compose for containerised deployment |
-| Drift monitoring | Evidently AI per-feature drift detection; JSON output designed for CI/CD and alerting integration |
-| Model documentation | `models/MODEL_CARD.md` documents intended use, known limitations, ethical considerations, and retraining policy |
+| Type safety | Pydantic v2 validation on all API inputs · Python type hints throughout `src/` |
+| Deployment | FastAPI with async request handlers · Dockerfile and docker-compose for containerised deployment |
+| Drift monitoring | Evidently AI per-feature drift detection · JSON output designed for CI/CD and alerting integration |
+| Model documentation | `models/MODEL_CARD.md` documents intended use, limitations, ethical considerations, and retraining policy |
 
 ---
 
@@ -688,7 +774,7 @@ fraudsentinel/
 ## Technology Stack
 
 | Category | Tool | Version | Purpose |
-|---|---|---|---|
+|:---|:---|:---:|:---|
 | Language | Python | 3.9+ | Core runtime |
 | Data processing | pandas, pyarrow | 2.0+, 14+ | Tabular processing and parquet I/O |
 | Classical ML | scikit-learn | 1.3+ | Baseline pipeline, preprocessing, calibration curves |
@@ -709,9 +795,10 @@ fraudsentinel/
 
 ## Dataset
 
-**IEEE-CIS Fraud Detection**
-Vesta Corporation and IEEE Computational Intelligence Society, Kaggle, 2019.
-590,540 real payment transactions. 394 transaction features and 41 identity features. 2.78% fraud rate.
+**IEEE-CIS Fraud Detection** · Vesta Corporation and IEEE Computational Intelligence Society · Kaggle, 2019
+
+590,540 real payment transactions · 394 transaction features · 41 identity features · 2.78% fraud rate
+
 [https://www.kaggle.com/c/ieee-fraud-detection](https://www.kaggle.com/c/ieee-fraud-detection)
 
 The dataset is not included in this repository. After downloading, place the CSV files in `data/raw/`. All derived artefacts are reproducible by running `make pipeline`.
@@ -720,8 +807,17 @@ The dataset is not included in this repository. After downloading, place the CSV
 
 ## Author
 
-Built by Ramesh. Connect on [LinkedIn](https://www.linkedin.com/in/rameshsta/) to discuss fraud ML, production MLOps, or real-time risk systems.
+<div align="center">
 
-See [`models/MODEL_CARD.md`](models/MODEL_CARD.md) for full model documentation including limitations, ethical considerations, and retraining policy.
+**Ramesh Shrestha** · Data Scientist · ML Engineer · Sydney, Australia
 
-MIT License.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rameshsta/)
+[![GitHub](https://img.shields.io/badge/GitHub-RameshSTA-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/RameshSTA)
+[![Model Card](https://img.shields.io/badge/Model%20Card-Documentation-4a6b9e?style=flat-square)](models/MODEL_CARD.md)
+[![License](https://img.shields.io/badge/License-MIT-f0a500?style=flat-square)](LICENSE)
+
+*Connect to discuss fraud ML, production MLOps, or real-time risk systems.*
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a2c4e,100:4a6b9e&height=120&section=footer" width="100%" alt="footer"/>
