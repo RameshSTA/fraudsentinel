@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a2c4e,100:4a6b9e&height=230&section=header&text=FraudSentinel&fontColor=ffffff&fontSize=68&fontAlignY=40&desc=Proactive%20Payment%20Fraud%20Intelligence&descColor=b8cceb&descSize=22&descAlignY=63" width="100%" alt="FraudSentinel"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a2c4e,100:4a6b9e&height=230&section=header&text=FraudSentinel&fontColor=ffffff&fontSize=68&fontAlignY=38&desc=Temporal%20Anomaly%20Detection%20at%20Scale&descColor=b8cceb&descSize=22&descAlignY=63" width="100%" alt="FraudSentinel — Temporal Anomaly Detection at Scale"/>
 </div>
 
 <div align="center">
